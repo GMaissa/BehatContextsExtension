@@ -144,7 +144,7 @@ trait FormTrait
 
         if (!$optionField->isSelected()) {
             throw new ExpectationException(
-                'Select option with value|text "'.$option.'" is not selected in the select "'.$select.'"',
+                'Option with value|text "'.$option.'" is not selected in the select "'.$select.'"',
                 $this->getSession()
             );
         }

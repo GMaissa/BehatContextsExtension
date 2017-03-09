@@ -1,0 +1,25 @@
+{
+    "name": "gmaissa/behat-contexts-extension",
+    "description": "Behat Contexts Extension",
+    "license": "MIT",
+    "keywords": ["Behat", "Context", "REST", "OAuth"],
+    "authors": [
+        {
+            "name": "Guillaume Maïssa",
+            "email": "guillaume@maissa.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"GMaissa\\BehatContextsExtension\\": "src/"}
+    },
+    "require": {
+        "behat/behat": "^3.0",
+        "behat/mink-extension": "^2.0",
+        "behatch/contexts": "^2.2"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.0",
+        "phpmd/phpmd": "^2.0",
+        "sebastian/phpcpd": "^2.0"
+    }
+}

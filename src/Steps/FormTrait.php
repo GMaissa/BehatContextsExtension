@@ -30,7 +30,7 @@ trait FormTrait
      *
      * @return Session
      */
-    abstract public function getSession();
+    abstract public function getSession($name = null);
 
     /**
      * Check options list of a select element

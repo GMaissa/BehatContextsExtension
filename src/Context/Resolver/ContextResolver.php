@@ -11,6 +11,7 @@
 namespace GMaissa\BehatContextsExtension\Context\Resolver;
 
 use Behat\Behat\Context\ContextClass\ClassResolver as BaseClassResolver;
+use Symfony\Component\PropertyAccess\Exception\InvalidArgumentException;
 
 /**
  * GMaissa Behat Context Class Resolver
@@ -32,9 +33,12 @@ class ContextResolver implements BaseClassResolver
     {
         if (strpos($contextClass, 'gm:context:') === false) {
             //@TODO : Throw an exception
+            throw new InvalidArgumentException(
+                sprintf('Invalid context name "%s".', $contextClass)
+            );
         }
 
-        list(, , $className) = explode(':', $contextClass);
+        list(,, $className) = explode(':', $contextClass);
         $className = ucfirst($className);
 
         $return = "\\GMaissa\\BehatContextsExtension\\Context\\{$className}Context";

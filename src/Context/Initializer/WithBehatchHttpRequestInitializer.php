@@ -25,11 +25,11 @@ class WithBehatchHttpRequestInitializer implements ContextInitializer
     /**
      * Initializes initializer.
      *
-     * @param array $parameters
+     * @param Request $request
      */
     public function __construct(Request $request)
     {
-        $this->request    = $request;
+        $this->request = $request;
     }
 
     /**

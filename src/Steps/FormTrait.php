@@ -13,6 +13,7 @@ namespace GMaissa\BehatContextsExtension\Steps;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Exception\ExpectationException;
+use Behat\Mink\Session;
 use GMaissa\BehatContextsExtension\Utils\SpinTrait;
 
 /**
@@ -21,6 +22,15 @@ use GMaissa\BehatContextsExtension\Utils\SpinTrait;
 trait FormTrait
 {
     use SpinTrait;
+
+    /**
+     * Returns Mink session.
+     *
+     * @param string|null $name name of the session OR active session will be used
+     *
+     * @return Session
+     */
+    abstract public function getSession();
 
     /**
      * Check options list of a select element
@@ -35,7 +45,7 @@ trait FormTrait
      */
     public function selectShouldContainFollowingOptions($select, TableNode $options)
     {
-        $this->spin(function () use ($select, $options) {
+        $this->spin(function() use ($select, $options) {
             $selectField = $this->getSession()->getPage()->findField($select);
 
             if (null === $selectField) {
@@ -73,7 +83,7 @@ trait FormTrait
      */
     public function selectShouldContainOptions($select, $options)
     {
-        $this->spin(function () use ($select, $options) {
+        $this->spin(function() use ($select, $options) {
             $selectField = $this->getSession()->getPage()->findField($select);
 
             if (null === $selectField) {

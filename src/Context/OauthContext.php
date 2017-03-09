@@ -53,7 +53,7 @@ class OauthContext extends RawMinkContext implements WithBehatchHttpRequestConte
      */
     public function iAuthenticatedOnOauthServerAs($login, $password)
     {
-        $params   = [
+        $params = [
             'grant_type'    => $this->grantType,
             'client_id'     => $this->clientId,
             'client_secret' => $this->clientSecret,
@@ -72,7 +72,7 @@ class OauthContext extends RawMinkContext implements WithBehatchHttpRequestConte
         $response = json_decode($result->getContent(), true);
         if (isset($response['access_token'])) {
             $accessToken = $response['access_token'];
-            self::$request->setHttpHeader('Authorization', 'Bearer ' . $accessToken);
+            self::$request->setHttpHeader('Authorization', 'Bearer '.$accessToken);
         }
     }
 

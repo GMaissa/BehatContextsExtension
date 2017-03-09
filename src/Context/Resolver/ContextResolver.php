@@ -32,7 +32,6 @@ class ContextResolver implements BaseClassResolver
     public function resolveClass($contextClass)
     {
         if (strpos($contextClass, 'gm:context:') === false) {
-            //@TODO : Throw an exception
             throw new InvalidArgumentException(
                 sprintf('Invalid context name "%s".', $contextClass)
             );

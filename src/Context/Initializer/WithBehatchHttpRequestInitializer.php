@@ -21,7 +21,6 @@ use GMaissa\BehatContextsExtension\Context\WithBehatchHttpRequestContextInterfac
 class WithBehatchHttpRequestInitializer implements ContextInitializer
 {
     private $request;
-    private $parameters;
 
     /**
      * Initializes initializer.
@@ -43,6 +42,5 @@ class WithBehatchHttpRequestInitializer implements ContextInitializer
         }
 
         $context->setRequest($this->request);
-        $context->setParameters($this->parameters);
     }
 }

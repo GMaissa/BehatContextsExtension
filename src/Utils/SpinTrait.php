@@ -21,7 +21,7 @@ trait SpinTrait
      * Step timeout
      * @var integer
      */
-    protected static $timeout = 60;
+    protected static $timeout = 30;
 
     /**
      * Retrieve the waiting timeout
@@ -44,51 +44,45 @@ trait SpinTrait
     }
 
     /**
-     * This method executes $callable every second.
-     * If its return value is evaluated to true, the spinning stops and the value is returned.
-     * If the return value is falsy, the spinning continues until the loop limit is reached,
-     * In that case a TimeoutException is thrown.
+     * This method executes the $callable every second.
      *
-     * @param callable $callable closure to be called
-     * @param string $message error message to display
+     * If the return value is true, it stops spinning and returns the value
+     * If the return value is false or null, it keeps spinning until the timeout is reached
      *
-     * @throws Timeout
+     * @param callable $callable
+     * @param string   $message
      *
      * @return mixed
+     * @throws Timeout if the timeout is reached
      */
-    public function spin($callable, $message)
+    public function spin($callable, $message = null)
     {
-        $timeout = self::$timeout;
-        $start = microtime(true);
-        $end = $start + $timeout;
-        $logThreshold = (int)$timeout * 0.8;
-        $previousException = null;
-        $result = null;
-        $looping = false;
+        $timeout           = self::$timeout;
+        $end               = microtime(true) + $timeout;
+        $callableException = false;
+        $result            = false;
+        $spin              = false;
 
         do {
-            if ($looping) {
+            if ($spin) {
                 sleep(1);
             }
             try {
                 $result = $callable($this);
             } catch (\Exception $e) {
-                $previousException = $e;
+                $callableException = $e;
             }
-            $looping = true;
-        } while (microtime(true) < $end && !$result && !$previousException instanceof Timeout);
+            $spin = true;
+        } while (microtime(true) < $end && empty($result) && !$callableException instanceof Timeout);
 
-        if (null === $message) {
-            $message = (null !== $previousException) ? $previousException->getMessage() : 'no message';
-        }
         if (!$result) {
-            $info = sprintf('Spin : timeout of %d excedeed, with message : %s', $timeout, $message);
-            throw new Timeout($info, 0, $previousException);
+            if ($message === null) {
+                $message = ($callableException !== false) ? $callableException->getMessage() : 'no message';
+            }
+            $info = sprintf('Spin : timeout of %d exceeded, with message : %s', $timeout, $message);
+            throw new Timeout($info, 0, $callableException);
         }
-        $elapsed = microtime(true) - $start;
-        if ($elapsed >= $logThreshold) {
-            printf('[%s] Long spin (%d seconds) with message : %s', date('y-md H:i:s'), $elapsed, $message);
-        }
+
         return $result;
     }
 }

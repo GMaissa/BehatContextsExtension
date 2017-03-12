@@ -13,12 +13,12 @@ namespace GMaissa\BehatContextsExtension\Context\Initializer;
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\Initializer\ContextInitializer;
 use Behatch\HttpCall\Request;
-use GMaissa\BehatContextsExtension\Context\WithBehatchHttpRequestContextInterface;
+use GMaissa\BehatContextsExtension\Context\BehatchRequestAwareContextInterface;
 
 /**
- * OAuth context initializer
+ * Initializer for contexts using Behatch Request object
  */
-class WithBehatchHttpRequestInitializer implements ContextInitializer
+class BehatchRequestAwareInitializer implements ContextInitializer
 {
     private $request;
 
@@ -37,7 +37,7 @@ class WithBehatchHttpRequestInitializer implements ContextInitializer
      */
     public function initializeContext(Context $context)
     {
-        if (!$context instanceof WithBehatchHttpRequestContextInterface) {
+        if (!$context instanceof BehatchRequestAwareContextInterface) {
             return;
         }
 

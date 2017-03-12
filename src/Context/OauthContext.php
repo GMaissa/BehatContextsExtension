@@ -16,11 +16,10 @@ use Behatch\HttpCall\Request;
 /**
  * OAuth Context
  */
-class OauthContext extends RawMinkContext implements WithBehatchHttpRequestContextInterface
+class OauthContext extends RawMinkContext implements BehatchRequestAwareContextInterface
 {
     protected static $request;
     protected $serverUrl;
-    protected $grantType;
     protected $clientId;
     protected $clientSecret;
 
@@ -32,10 +31,9 @@ class OauthContext extends RawMinkContext implements WithBehatchHttpRequestConte
      * @param string $clientId
      * @param string $clientSecret
      */
-    public function __construct($serverUrl, $grantType, $clientId, $clientSecret)
+    public function __construct($serverUrl, $clientId, $clientSecret)
     {
         $this->serverUrl    = $serverUrl;
-        $this->grantType    = $grantType;
         $this->clientId     = $clientId;
         $this->clientSecret = $clientSecret;
     }
@@ -54,7 +52,7 @@ class OauthContext extends RawMinkContext implements WithBehatchHttpRequestConte
     public function iAuthenticatedOnOauthServerAs($login, $password)
     {
         $params = [
-            'grant_type'    => $this->grantType,
+            'grant_type'    => 'password',
             'client_id'     => $this->clientId,
             'client_secret' => $this->clientSecret,
             'username'      => $login,

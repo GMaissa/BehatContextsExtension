@@ -8,29 +8,20 @@
  * @license   https://opensource.org/licenses/MIT MIT
  */
 
-namespace GMaissa\BehatContextsExtension\Steps;
+namespace GMaissa\BehatContextsExtension\Context;
 
 use Behat\Gherkin\Node\TableNode;
 use Behat\Mink\Exception\ElementNotFoundException;
 use Behat\Mink\Exception\ExpectationException;
-use Behat\Mink\Session;
+use Behat\MinkExtension\Context\RawMinkContext;
 use GMaissa\BehatContextsExtension\Utils\SpinTrait;
 
 /**
- * Defines application features from the specific context.
+ * Additional Form Steps Context
  */
-trait FormTrait
+class FormContext extends RawMinkContext
 {
     use SpinTrait;
-
-    /**
-     * Returns Mink session.
-     *
-     * @param string|null $name name of the session OR active session will be used
-     *
-     * @return Session
-     */
-    abstract public function getSession($name = null);
 
     /**
      * Check options list of a select element

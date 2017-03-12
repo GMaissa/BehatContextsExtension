@@ -15,7 +15,7 @@ use Behatch\HttpCall\Request;
 /**
  * Context with parameters interface class
  */
-interface WithBehatchHttpRequestContextInterface
+interface BehatchRequestAwareContextInterface
 {
     /**
      * Set the HTTP Request object

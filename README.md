@@ -2,13 +2,13 @@
 
 ## About
 
-This bundle provides a Behat Context class :
+This bundle provides Behat Context classes :
 
 * OauthContext : to manage oauth authentication
+* FormContext  : to manage oauth authentication
 
-As well as Steps / Utils Traits :
+As well as usefull Traits :
 
-* FormTrait : addition steps for form testing
 * SpinTrait : to manage retry on steps until ether they pass or timeout 
 
 ## Installation
@@ -47,13 +47,13 @@ Enable the desired contexts:
             default:
                 contexts:
                     - gm:context:oauth
+                    - gm:context:form
 
 ## Contexts configuration
 
 ### OauthContext
 
 * serverUrl : OAuth server URL
-* grantType : OAuth grant type
 * clientId : OAuth client ID
 * clientSecret : OAuth client secret key
 

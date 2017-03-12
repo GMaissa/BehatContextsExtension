@@ -84,7 +84,7 @@ class BehatContextsExtension implements ExtensionInterface
     private function loadContextInitializer(ContainerBuilder $container)
     {
         $definition = new Definition(
-            'GMaissa\BehatContextsExtension\Context\Initializer\WithBehatchHttpRequestInitializer',
+            'GMaissa\BehatContextsExtension\Context\Initializer\BehatchRequestAwareInitializer',
             array(
                 new Reference('behatch.http_call.request'),
             )

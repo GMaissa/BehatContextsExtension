@@ -9,7 +9,7 @@ This bundle provides Behat Context classes :
 
 As well as usefull Traits :
 
-* SpinTrait : to manage retry on steps until ether they pass or timeout 
+* SpinTrait : to manage retry on steps, until either they pass or time out
 
 ## Installation
 

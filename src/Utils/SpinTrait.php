@@ -2,6 +2,8 @@
 /**
  * This file is part of the GMaissa Behat Context Extension
  *
+ * Largely inspired by Akeneo's Spin Trait
+ *
  * @package   GMaissa\BehatContextsExtension
  * @author    Guillaume Maïssa <guillaume@maissa.fr>
  * @copyright 2017 Guillaume Maïssa
@@ -38,7 +40,7 @@ trait SpinTrait
      *
      * @param integer $timeout
      */
-    protected function setTimeout($timeout)
+    public function setTimeout($timeout)
     {
         static::$timeout = $timeout;
     }
@@ -57,9 +59,9 @@ trait SpinTrait
      */
     public function spin($callable, $message = null)
     {
-        $timeout           = self::$timeout;
-        $end               = microtime(true) + $timeout;
-        $callableException = false;
+        $timeout           = self::getTimeout();
+        $end               = microtime(true) + ($timeout);
+        $callableException = null;
         $result            = false;
         $spin              = false;
 
@@ -77,7 +79,7 @@ trait SpinTrait
 
         if (!$result) {
             if ($message === null) {
-                $message = ($callableException !== false) ? $callableException->getMessage() : 'no message';
+                $message = ($callableException !== null) ? $callableException->getMessage() : 'no message';
             }
             $info = sprintf('Spin : timeout of %d exceeded, with message : %s', $timeout, $message);
             throw new Timeout($info, 0, $callableException);

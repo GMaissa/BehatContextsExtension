@@ -5,7 +5,7 @@
 This bundle provides Behat Context classes :
 
 * OauthContext : to manage oauth authentication
-* FormContext  : to manage oauth authentication
+* FormContext  : to additional form steps
 
 As well as usefull Traits :
 
@@ -29,7 +29,7 @@ First add the package repository to your composer.json file (package not yet ava
 
 Install the package :
 
-    php composer.phar require gmaissa/behat-contexts-extension
+    php composer.phar require --dev gmaissa/behat-contexts-extension
 
 ## Usage
 
@@ -64,9 +64,5 @@ In order to be accepted, your contribution needs to pass a few controls :
 * PHP files should be valid
 * PHP files should follow the [PSR-2](http://www.php-fig.org/psr/psr-2/) standard
 * PHP files should be [phpmd](https://phpmd.org) and [phpcpd](https://github.com/sebastianbergmann/phpcpd) warning/error free
-
-To ease the validation process, install the [pre-commit framework](http://pre-commit.com) and install the repository pre-commit hook :
-
-    pre-commit install
 
 Finally, in order to homogenize commit messages across contributors (and to ease generation of the CHANGELOG), please apply this [git commit message hook](https://gist.github.com/GMaissa/f008b2ffca417c09c7b8) onto your local repository. 

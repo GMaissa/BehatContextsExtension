@@ -27,7 +27,6 @@ class OauthContext extends RawMinkContext implements BehatchRequestAwareContextI
      * Class constructor
      *
      * @param string $serverUrl
-     * @param string $grantType
      * @param string $clientId
      * @param string $clientSecret
      */

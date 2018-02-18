@@ -12,14 +12,19 @@
     "autoload": {
         "psr-4": {"GMaissa\\BehatContextsExtension\\": "src/"}
     },
+    "autoload-dev": {
+        "psr-4": { "GMaissa\\BehatContextsExtension\\Tests\\": "tests/" }
+    },
     "require": {
         "behat/behat": "^3.0",
         "behat/mink-extension": "^2.0",
-        "behatch/contexts": "^2.2"
+        "behatch/contexts": "^2.2|^3.0",
+        "behat/mink": "^1.7"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.0",
         "phpmd/phpmd": "^2.0",
-        "sebastian/phpcpd": "^2.0"
+        "sebastian/phpcpd": "^2.0",
+        "phpunit/phpunit": "^5.0|^6.0|^7.0"
     }
 }

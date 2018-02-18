@@ -1,5 +1,6 @@
 {
     "name": "gmaissa/behat-contexts-extension",
+    "type": "behat-extension",
     "description": "Behat Contexts Extension",
     "license": "MIT",
     "keywords": ["Behat", "Context", "REST", "OAuth"],

@@ -1,15 +1,20 @@
 # Behat Contexts Extension
 
+ master | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GMaissa/BehatContextsExtension/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GMaissa/BehatContextsExtension/?branch=master) |
+--------|---------|
+
 ## About
 
 This bundle provides Behat Context classes :
 
 * OauthContext : to manage oauth authentication
 * FormContext  : to additional form steps
+* WindowSizeContext : to manage browser window resize before tests
 
 As well as usefull Traits :
 
 * SpinTrait : to manage retry on steps, until either they pass or time out
+* WindowSizeTrait : to manage browser window resize before tests
 
 ## Installation
 
@@ -38,7 +43,7 @@ Activate the extension in your behat.yml file :
     default:
         # ...
         extensions:
-            GMaissa\BehatContextExtension: ~
+            GMaissa\BehatContextsExtension: ~
 
 Enable the desired contexts:
 
@@ -48,6 +53,7 @@ Enable the desired contexts:
                 contexts:
                     - gm:context:oauth
                     - gm:context:form
+                    - gm:context:windowSize
 
 ## Contexts configuration
 
@@ -56,6 +62,11 @@ Enable the desired contexts:
 * serverUrl : OAuth server URL
 * clientId : OAuth client ID
 * clientSecret : OAuth client secret key
+
+### WindowSizeContext
+
+* width : window width
+* height : window height
 
 ## Contributing
 

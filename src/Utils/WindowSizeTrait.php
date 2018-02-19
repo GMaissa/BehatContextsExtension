@@ -19,15 +19,24 @@ trait WindowSizeTrait
 {
     /**
      * Browser window width
-     * @var integer
+     * @var integer|false
      */
     private static $windowWidth;
 
     /**
      * Browser window height
-     * @var integer
+     * @var integer|false
      */
     private static $windowHeight;
+
+    /**
+     * Returns Mink session.
+     *
+     * @param string|null $name name of the session OR active session will be used
+     *
+     * @return Session
+     */
+    abstract public function getSession($name = null);
 
     /**
      * Set the window size parameters

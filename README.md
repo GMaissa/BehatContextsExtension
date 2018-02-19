@@ -1,7 +1,7 @@
 # Behat Contexts Extension
 
- master | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GMaissa/BehatContextsExtension/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GMaissa/BehatContextsExtension/?branch=master) |
---------|---------|
+ master | [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/GMaissa/BehatContextsExtension/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/GMaissa/BehatContextsExtension/?branch=master) | [![Build Status](https://travis-ci.org/GMaissa/BehatContextsExtension.svg?branch=master)](https://travis-ci.org/GMaissa/BehatContextsExtension) |
+--------|---------|---------|
 
 ## About
 
